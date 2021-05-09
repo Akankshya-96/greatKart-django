@@ -28,25 +28,25 @@
 
 <!-- custom javascript -->
 <script src="{% static 'js/script.js'%}" type="text/javascript"></script>
+<!--paypal script-->
+<script src="https://www.paypal.com/sdk/js?client-id=AVyktPr9gEh_-m3yUZHJhC7vjyDDScGGh0-eRycDPLXiAfMnzatApCXnApx-ja_unt48eLzJZ0vC56lD&currency=USD"></script>
 
 <script type="text/javascript">
 /// some script
-
 // jquery ready start
 $(document).ready(function() {
-	// jQuery code
-
+  // jQuery code
 });
 // jquery end
 </script>
 </head>
 <body>
   <!-- Navbar.html content will placed here -->
-  {% include 'includes/navbar.html'%}
+{% include 'includes/navbar.html'%}
 
-  {% block content %}
+{% block content %}
   <!-- load content here -->
-  {% endblock%}
+{% endblock%}
 
   <!--footer.html -->
 {% include 'includes/footer.html'%}
