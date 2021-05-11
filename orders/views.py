@@ -39,10 +39,11 @@ def payments(request):
         orderproduct.save()
 
         cart_item =CartItem.objects.get(id=item.id)
-        product_variation = cart_item.variations.all()
+        product_variation =cart_item.variations.all()
         orderproduct = OrderProduct.objects.get(id=orderproduct.id)
         orderproduct.variations.set(product_variation)
         orderproduct.save()
+
     # reduce quantity of sold product
         product = Product.objects.get(id=item.product_id)
         product.stock -= item.Quantity
@@ -50,13 +51,13 @@ def payments(request):
     # clear carts
     CartItem.objects.filter(user = request.user).delete()
     # send recived mail to customer
-    email_subject = 'Thank you for your order!'
+    mail_subject = 'Thank you for your order!'
     message = render_to_string('orders/order_recieved_email.html', {
         'user' :request.user,
         'order':order,
-        })
+    })
     to_email = request.user.email
-    send_email = EmailMessage(email_subject,message,to=[to_email])
+    send_email = EmailMessage(mail_subject, message, to=[to_email])
     send_email.send()
     # send order number and transaction id back to senddata method via json response
     data ={

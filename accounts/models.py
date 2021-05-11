@@ -55,6 +55,10 @@ class Account(AbstractBaseUser):
     REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
 
     objects = MyAccountManager() # used to tell that we are using MyAccountManager for superuser and user
+
+    def full_name(self):
+        return f'{self.first_name}{self.last_name}'
+        
     # it will return email while login
     def __str__(self):
         return self.email
