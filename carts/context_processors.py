@@ -1,7 +1,8 @@
 from .models import Cart,CartItem
 from .views import _cart_id
 
-
+# A context processor is a python function that takes the request object as argument and returns a dictionary that get added t the request context
+# something available globally to all template
 def counter(request):
     cart_count = 0
     if 'admin' in request.path:
